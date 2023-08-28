@@ -1,0 +1,365 @@
+{
+  "Uuid": "e921013d-8f3f-4eab-b2a7-81fe775ab658",
+  "IsCustomNode": true,
+  "Category": "Mine ",
+  "Description": "",
+  "Name": "CreateandMergeList",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Element.GetParameters": {
+        "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
+      },
+      "Element.Parameters": {
+        "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
+      },
+      "Element": {
+        "Key": "Revit.Elements.Element",
+        "Value": "RevitNodes.dll"
+      },
+      "Vector": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "FamilyInstance": {
+        "Key": "Revit.Elements.FamilyInstance",
+        "Value": "RevitNodes.dll"
+      },
+      "Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      },
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      },
+      "Geometry": {
+        "Key": "Autodesk.DesignScript.Geometry.Geometry",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Material": {
+        "Key": "Revit.Elements.Material",
+        "Value": "RevitNodes.dll"
+      },
+      "Vector.by": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "75ab0609e12e47fb850309d25b556892",
+      "Inputs": [
+        {
+          "Id": "46bd56f199aa40558de9c40783ac1fc0",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bffa766cda204a5daa0b4e3a68504cd6",
+          "Name": "item1",
+          "Description": "Item Index #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e33bc5186684688b8a421a2906ebb3c",
+          "Name": "list",
+          "Description": "A list (type: var[]..[])",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Id": "6d20a44fedf74c9c8ff69370c7fde898",
+      "Inputs": [
+        {
+          "Id": "08bdf41e3ab44091b20495dfe1d90d0c",
+          "Name": "lists",
+          "Description": "List of lists to be transposed\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 4,
+          "UseLevels": true,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a0afa68a8bdc4e3d973ab0281e3fe9d8",
+          "Name": "lists",
+          "Description": "List of transposed lists",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Swaps rows and columns in a list of lists. If there are some rows that are shorter than others, null values are inserted as place holders in the resultant array such that it is always rectangular.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "91e83787b5e749e08f574753e495ff4f",
+      "Inputs": [
+        {
+          "Id": "b403fba9f8f44b27856ce852f03bf61e",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 3,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d2c0497c79d8405a9312fa80073ee0bf",
+          "Name": "amount",
+          "Description": "Layers of list nesting to remove (-1 will remove all list nestings)\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9ff53703524e456389b9ec04407178d9",
+          "Name": "list",
+          "Description": "Flattened list by amount",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "list",
+      "Id": "5252567e3144495fa438a1600265b111",
+      "Inputs": [
+        {
+          "Id": "e84c73a8988d41cba046932d6ff1b8f8",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "ff51054dc4134f599715dc93031a1770",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ecaa601c140c481baee0dc61d0c69f26",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "3636313e80ef434dabba1c22e79b5096",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "645efcc59f26454fa474fe2f036e0bee",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3e33bc5186684688b8a421a2906ebb3c",
+      "End": "08bdf41e3ab44091b20495dfe1d90d0c",
+      "Id": "2be1e6b748954fe38a8b076ffe916370",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "a0afa68a8bdc4e3d973ab0281e3fe9d8",
+      "End": "b403fba9f8f44b27856ce852f03bf61e",
+      "Id": "dbdccfe9e41e42af879ade5ea9f30bb9",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "9ff53703524e456389b9ec04407178d9",
+      "End": "e84c73a8988d41cba046932d6ff1b8f8",
+      "Id": "61284f1334054577b098c50773634714",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "ecaa601c140c481baee0dc61d0c69f26",
+      "End": "46bd56f199aa40558de9c40783ac1fc0",
+      "Id": "bb0709135acb417698c8d4fa32976389",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "645efcc59f26454fa474fe2f036e0bee",
+      "End": "bffa766cda204a5daa0b4e3a68504cd6",
+      "Id": "90ef891dc1064e2eb63fdeede62f28d8",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -60.940471649169922,
+      "EyeY": 71.585800170898438,
+      "EyeZ": 262.37896728515625,
+      "LookX": 55.939777374267578,
+      "LookY": -60.601425170898438,
+      "LookZ": -270.3756103515625,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "List Create",
+        "ShowGeometry": true,
+        "Id": "75ab0609e12e47fb850309d25b556892",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 44.916592584650061
+      },
+      {
+        "Name": "List.Transpose",
+        "ShowGeometry": false,
+        "Id": "6d20a44fedf74c9c8ff69370c7fde898",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 553.92341308231562,
+        "Y": 41.422063078770407
+      },
+      {
+        "Name": "AllFirstRowCoordinates",
+        "ShowGeometry": true,
+        "Id": "91e83787b5e749e08f574753e495ff4f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 877.73897582884,
+        "Y": 0.0
+      },
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "5252567e3144495fa438a1600265b111",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1200.73897582884,
+        "Y": 0.0
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "ff51054dc4134f599715dc93031a1770",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -45.0,
+        "Y": -106.0
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "3636313e80ef434dabba1c22e79b5096",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -72.0,
+        "Y": 129.0
+      }
+    ],
+    "Annotations": [],
+    "X": 562.0,
+    "Y": 293.0,
+    "Zoom": 1.0
+  }
+}

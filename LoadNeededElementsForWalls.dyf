@@ -1,0 +1,221 @@
+{
+  "Uuid": "a9b11fcf-77d9-4ed4-87c2-9bf75471b16a",
+  "IsCustomNode": true,
+  "Category": "archilab",
+  "Description": "",
+  "Name": "LoadNeededElementsForWalls",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "ElemenentPath",
+      "Id": "ac18f48f5384444fb84d2cff52510136",
+      "Inputs": [
+        {
+          "Id": "5a9ee754e6ca4150b162b99af203d1d4",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport os\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom System.Collections.Generic import *\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndirs = IN[0]\r\nparentDir = IN[1][0]\r\n\r\n# Start\r\ntry:\r\n\tabsDirs = []\r\n\tfilenames = []\r\n\tfor d in dirs:\t\r\n\t\tabsPath = os.path.join(parentDir, d)\r\n\t\tabsDirs.append(absPath)\t\r\n\t\tif not os.path.exists(absPath):\r\n\t\t\t\tos.makedirs(absPath)\r\n\t\tfor f in os.listdir(absPath):\r\n\t\t\tfAbsPath = os.path.join(absPath, f)\r\n\t\t\tif os.path.isfile(fAbsPath):\r\n\t\t\t\tfilenames.append(fAbsPath)\r\n\t\t\t\r\n\t\t\t\t\t\r\n\t\t\r\n\tOUT = filenames\r\nexcept Exception as e:\r\n\tOUT = str(e)\r\n\r\n\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "96dde0a8405c462fb3dcd8e8f79877d3",
+      "Inputs": [
+        {
+          "Id": "d09cbf38d47146c4944a27d7d4973f0e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0bbb4df415034cbe90f81944df78293d",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d5b325994443477f90df0a98b8bc5461",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "WallMaterials",
+        "TypeName": "var",
+        "TypeRank": 1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "7d93c208d0414c4eb1492d2436ddcf1e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "117f2c18ae934ae9a8ef9e2db1649b03",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "Directory",
+        "TypeName": "var",
+        "TypeRank": 1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "f52353b6866f47128bbc32104f4087e6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "764fad30ecde47ef832015db20353211",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "d5b325994443477f90df0a98b8bc5461",
+      "End": "5a9ee754e6ca4150b162b99af203d1d4",
+      "Id": "1dab556f584a4cc9b59b790ba2fba372",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "117f2c18ae934ae9a8ef9e2db1649b03",
+      "End": "d09cbf38d47146c4944a27d7d4973f0e",
+      "Id": "c4c7659b381a4c389dafb377e05e00eb",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "764fad30ecde47ef832015db20353211",
+      "End": "0bbb4df415034cbe90f81944df78293d",
+      "Id": "1750520b8e5e45f48fcd6e68da5c1c4e",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "ac18f48f5384444fb84d2cff52510136",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 733.71336819767384,
+        "Y": 177.00000000000003
+      },
+      {
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Id": "96dde0a8405c462fb3dcd8e8f79877d3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 474.5,
+        "Y": 172.0
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "7d93c208d0414c4eb1492d2436ddcf1e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 129.185738522723,
+        "Y": 84.433332073647989
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "f52353b6866f47128bbc32104f4087e6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 182.185738522723,
+        "Y": 409.433332073648
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}

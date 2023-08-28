@@ -1,0 +1,597 @@
+{
+  "Uuid": "bdd6315c-9408-4c5a-9026-74682441f745",
+  "IsCustomNode": true,
+  "Category": "Mine ",
+  "Description": "",
+  "Name": "NamePartailBlocks",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Material": {
+        "Key": "Revit.Elements.Material",
+        "Value": "RevitNodes.dll"
+      },
+      "Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cuboid.Width",
+      "Id": "53210ade215141d4855202b41d33d299",
+      "Inputs": [
+        {
+          "Id": "0fb7270283214b5e840de8cc07ae75e9",
+          "Name": "cuboid",
+          "Description": "Autodesk.DesignScript.Geometry.Cuboid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e482c687a4844ee81ebacc59ff067cd",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns width distance. Note: This return the input dimensions of the Cuboid, NOT the actual world space dimensions. In other words, if you create a Cuboid width (X-axis) length 10, and transform it to a CoordinateSystem with 2 times scaling in X, the width will still be 10. ASM does not allow you to extract the Vertices of a body in any predictable order, so it impossible to determine the dimensions after a transform.\n\nCuboid.Width: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cuboid.Height",
+      "Id": "70627e8242694f53960ed60f2ed41e27",
+      "Inputs": [
+        {
+          "Id": "f8ce8c6201474470aa46007bcfa1629b",
+          "Name": "cuboid",
+          "Description": "Autodesk.DesignScript.Geometry.Cuboid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9ea6b973ef724c609534fa1e4322a44a",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns height distance. Note: This return the input dimensions of the Cuboid, NOT the actual world space dimensions. In other words, if you create a Cuboid width (X-axis) length 10, and transform it to a CoordinateSystem with 2 times scaling in X, the width will still be 10. ASM does not allow you to extract the Vertices of a body in any predictable order, so it impossible to determine the dimensions after a transform.\n\nCuboid.Height: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "x*12;",
+      "Id": "39744ca9bd284bbda1fd91622b011ba6",
+      "Inputs": [
+        {
+          "Id": "397dd34f854d4c01a1d960d0a1d35368",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5d81c22f902c4a239b513acbff26eb79",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "2;",
+      "Id": "e753ac0555114c55ae9606ebeacef510",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2767cd567b0b4195b453f16b1c275202",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Math.Round@double,int",
+      "Id": "660e7a4ec2aa492998b70de58020a8f1",
+      "Inputs": [
+        {
+          "Id": "0140b2c5c7034fe1a485313f189f5ee3",
+          "Name": "number",
+          "Description": "Number to round\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "84ad9e362dd14f30a15e87233f80c6ed",
+          "Name": "digits",
+          "Description": "Number of fractional digits in the return value\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bbc5ebab37184130b0a1f4001763f898",
+          "Name": "number",
+          "Description": "The number nearest to value that contains a number of fractional digits equal to digits",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Rounds a number to a specified number of fractional digits.\n\nMath.Round (number: double, digits: int): double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "7138be89-af7b-4232-b938-e63a5fe78240",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "74258a8a62fc42dbaa253ed1920715fb",
+      "Inputs": [
+        {
+          "Id": "247768e60ef942859533e9e2830ae2e3",
+          "Name": "num",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c41b5cf75882407a969f832a4b67585b",
+          "Name": "digits",
+          "Description": "int\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9422809f97d847fc986711cb07de5161",
+          "Name": "str",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Converts the input number(s) to string. You can optionally limit the number of digits."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"8X8X\"+x;",
+      "Id": "8a4b3342da4949daa1a90625c416acbe",
+      "Inputs": [
+        {
+          "Id": "552fde24a974466fae63b0e4d982f179",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8547ec67215f4a829fc7d5a9cf5d0c8c",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.FromObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "ecb37bff5760429ab8e0fc567095ee59",
+      "Inputs": [
+        {
+          "Id": "443df1287d034432a04601344ec1b722",
+          "Name": "object",
+          "Description": "Object to be serialized",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b867bf98049249f9a236e81c62e57580",
+          "Name": "string",
+          "Description": "String representation of the object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Convert an object to a string representation."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "cuboid",
+        "TypeName": "Autodesk.DesignScript.Geometry.Cuboid",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "e75f8084df4849d8aa6d97185908056b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d8385104a6ac431e91da05fa62456ee5",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "double",
+      "Id": "4e71b01d4922443a9362dfd327016142",
+      "Inputs": [
+        {
+          "Id": "dd07063278d045f38acd99ff3387e190",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "double",
+      "Id": "17d213d4ab3543bc8bc86184ce243f1d",
+      "Inputs": [
+        {
+          "Id": "469df3bcef0845ce81dd731f02f3a4ec",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "string",
+      "Id": "be768329058f42e98407e59095915ba0",
+      "Inputs": [
+        {
+          "Id": "acfccffc0854419c80193d7a88033a0d",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3e482c687a4844ee81ebacc59ff067cd",
+      "End": "397dd34f854d4c01a1d960d0a1d35368",
+      "Id": "e082debf2dd34b16a43e50eaccb1892e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "3e482c687a4844ee81ebacc59ff067cd",
+      "End": "dd07063278d045f38acd99ff3387e190",
+      "Id": "a51a26784dfe4e87854de5b9552ccc32",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "9ea6b973ef724c609534fa1e4322a44a",
+      "End": "469df3bcef0845ce81dd731f02f3a4ec",
+      "Id": "0c149dee362545e68dc7dcb1ff6be9af",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "5d81c22f902c4a239b513acbff26eb79",
+      "End": "0140b2c5c7034fe1a485313f189f5ee3",
+      "Id": "80d033c04817442ba28b63ee37fa7a45",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "2767cd567b0b4195b453f16b1c275202",
+      "End": "84ad9e362dd14f30a15e87233f80c6ed",
+      "Id": "068f9f75698041ec8b7a210ac599082e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "2767cd567b0b4195b453f16b1c275202",
+      "End": "c41b5cf75882407a969f832a4b67585b",
+      "Id": "634efae6417646c0a898fce116ef272b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "bbc5ebab37184130b0a1f4001763f898",
+      "End": "247768e60ef942859533e9e2830ae2e3",
+      "Id": "c43f18094b774cae8deda208ebbe1a70",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "9422809f97d847fc986711cb07de5161",
+      "End": "552fde24a974466fae63b0e4d982f179",
+      "Id": "004a23a5a19341fd8d8a2d1555ae9bc0",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8547ec67215f4a829fc7d5a9cf5d0c8c",
+      "End": "443df1287d034432a04601344ec1b722",
+      "Id": "2bec912f4ec248a0a436e62c4fdcc8b5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b867bf98049249f9a236e81c62e57580",
+      "End": "acfccffc0854419c80193d7a88033a0d",
+      "Id": "34c765932c704b77a6d6ffc121f90976",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d8385104a6ac431e91da05fa62456ee5",
+      "End": "0fb7270283214b5e840de8cc07ae75e9",
+      "Id": "481f29c08ec946d9b617d0b649aeb790",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d8385104a6ac431e91da05fa62456ee5",
+      "End": "f8ce8c6201474470aa46007bcfa1629b",
+      "Id": "f817cea9ab6f49b5a9736bb15750c0aa",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [
+    "7138be89-af7b-4232-b938-e63a5fe78240"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "ꟿ Number.ToString.dyf",
+      "ReferenceType": "DYFFile",
+      "Nodes": [
+        "74258a8a62fc42dbaa253ed1920715fb"
+      ]
+    }
+  ],
+  "Author": "None provided",
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.13.1.3887",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Cuboid.Width",
+        "ShowGeometry": false,
+        "Id": "53210ade215141d4855202b41d33d299",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 260.74596645742531,
+        "Y": 0.0
+      },
+      {
+        "Name": "Cuboid.Height",
+        "ShowGeometry": false,
+        "Id": "70627e8242694f53960ed60f2ed41e27",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 304.07176682743682
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "39744ca9bd284bbda1fd91622b011ba6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 560.07358916535213,
+        "Y": 52.215233017776427
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "e753ac0555114c55ae9606ebeacef510",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 660.36968929667819,
+        "Y": 217.61274511110412
+      },
+      {
+        "Name": "Math.Round",
+        "ShowGeometry": true,
+        "Id": "660e7a4ec2aa492998b70de58020a8f1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 846.99342436268034,
+        "Y": 76.2369688356548
+      },
+      {
+        "Name": "ꟿ Number.ToString",
+        "ShowGeometry": false,
+        "Id": "74258a8a62fc42dbaa253ed1920715fb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1134.0548961287996,
+        "Y": 155.17276309742681
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "8a4b3342da4949daa1a90625c416acbe",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1455.0548961287996,
+        "Y": 155.17276309742681
+      },
+      {
+        "Name": "String from Object",
+        "ShowGeometry": false,
+        "Id": "ecb37bff5760429ab8e0fc567095ee59",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1732.0548961287996,
+        "Y": 155.34526309742648
+      },
+      {
+        "Name": "Input",
+        "ShowGeometry": true,
+        "Id": "e75f8084df4849d8aa6d97185908056b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 0.0,
+        "Y": 0.0
+      },
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "4e71b01d4922443a9362dfd327016142",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2018.0548961287986,
+        "Y": 0.0
+      },
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "17d213d4ab3543bc8bc86184ce243f1d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2018.0548961287986,
+        "Y": 150.0
+      },
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "be768329058f42e98407e59095915ba0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2018.0548961287986,
+        "Y": 300.0
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
